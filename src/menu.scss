@@ -1,0 +1,33 @@
+
+#navigator-toolbox {
+  display: flex;
+  flex-direction: column-reverse;
+  -moz-window-dragging: drag;
+}
+
+
+#nav-bar {
+  box-shadow: none;
+  background-color: transparent;
+  margin-right: 115px;
+  -moz-window-dragging: drag;
+}
+
+hbox.titlebar-buttonbox-container:nth-child(6) > hbox:nth-child(1) {
+  right: 0;
+}
+
+hbox.titlebar-buttonbox-container:nth-child(6) {
+  top: 0;
+  right: 0;
+  display: flex;
+  height: 40px;
+}
+
+hbox.titlebar-spacer:nth-child(3) {
+  display: none;
+}
+
+hbox.titlebar-spacer:nth-child(1) {
+  display: none;
+}
