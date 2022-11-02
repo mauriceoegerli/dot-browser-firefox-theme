@@ -1,15 +1,18 @@
-
 #navigator-toolbox {
   display: flex;
   flex-direction: column-reverse;
   -moz-window-dragging: drag;
+  border-style: none !important;
 }
 
+#titlebar {
+  appearance: unset !important;
+}
 
 #nav-bar {
-  box-shadow: none;
-  background-color: transparent;
-  margin-right: 115px;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  margin-right: 137px;
   -moz-window-dragging: drag;
 }
 
@@ -17,17 +20,152 @@ hbox.titlebar-buttonbox-container:nth-child(6) > hbox:nth-child(1) {
   right: 0;
 }
 
-hbox.titlebar-buttonbox-container:nth-child(6) {
+hbox.titlebar-buttonbox-container {
   top: 0;
   right: 0;
   display: flex;
   height: 40px;
+  position: fixed;
 }
 
-hbox.titlebar-spacer:nth-child(3) {
+hbox.titlebar-spacer[type="post-tabs"],
+hbox.titlebar-spacer[type="pre-tabs"] {
   display: none;
 }
 
-hbox.titlebar-spacer:nth-child(1) {
-  display: none;
+@mixin rounded-corner {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  top: 0;
+}
+
+#alltabs-button {
+  margin-bottom: 0 !important;
+  background-color: transparent !important;
+
+  .toolbarbutton-badge-stack {
+    padding: 7px !important;
+    margin: 3px;
+  }
+}
+
+#tabs-newtab-button {
+  .toolbarbutton-icon {
+    padding: 7px !important;
+    margin: 3px !important;
+    height: 30px !important;
+    width: 30px !important;
+  }
+}
+
+#urlbar-background {
+  border: none !important;
+  background-color: var(--toolbar-bgcolor) !important;
+}
+
+toolbar#TabsToolbar {
+  background-image: none !important;
+  background-color: var(--toolbar-bgcolor) !important;
+
+  #tabbrowser-tabs:not([movingtab]) {
+    #tabbrowser-arrowscrollbox {
+      #tabbrowser-arrowscrollbox-periphery {
+        margin-left: 3px;
+      }
+
+      .tabbrowser-tab {
+        overflow: visible !important;
+
+        &:nth-of-type(1) {
+          padding-left: 0 !important;
+
+          .tab-stack {
+            .tab-background {
+              border-radius: 0 0 6px 0 !important;
+            }
+          }
+        }
+
+        &:not([pinned]) {
+          max-width: 280px;
+        }
+
+        &[multiselected="true"],
+        &[selected="true"] {
+          .tab-stack {
+            overflow: visible;
+
+            .tab-content {
+              overflow: visible;
+
+              &::before {
+                @include rounded-corner();
+
+                background-color: var(--toolbar-bgcolor);
+                right: 100%;
+                border-radius: 0 6px 0 0;
+              }
+              &::after {
+                @include rounded-corner();
+
+                background-color: var(--toolbar-bgcolor);
+                left: 100%;
+                border-radius: 6px 0 0 0;
+              }
+            }
+            .tab-background {
+              &::before {
+                @include rounded-corner();
+
+                background-color: var(--lwt-accent-color);
+                right: 100%;
+              }
+              &::after {
+                @include rounded-corner();
+
+                background-color: var(--lwt-accent-color);
+                left: 100%;
+              }
+            }
+          }
+        }
+
+        .tab-stack {
+          .tab-content {
+            position: relative;
+          }
+
+          .tab-background {
+            background: transparent !important;
+            background-image: none !important;
+            position: relative;
+            margin: 0 !important;
+            border-radius: 0 0 6px 6px !important;
+            box-shadow: none !important;
+
+            &[multiselected="true"]:-moz-lwtheme,
+            &[selected="true"]:-moz-lwtheme {
+              background-color: var(--lwt-accent-color) !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#urlbar[focused="true"]:not([suppress-focus-border]) > #urlbar-background,
+#searchbar:focus-within {
+  outline: none !important;
+}
+
+#urlbar[open] > .urlbarView > .urlbarView-body-outer > .urlbarView-body-inner {
+  border-style: none !important;
+}
+
+.urlbarView:not([noresults]) > .search-one-offs:not([hidden]) {
+  border-style: none !important;
 }
