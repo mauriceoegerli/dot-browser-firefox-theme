@@ -28,13 +28,13 @@ hbox.titlebar-buttonbox-container {
   position: fixed;
 }
 
-hbox.titlebar-spacer[type="post-tabs"],
-hbox.titlebar-spacer[type="pre-tabs"] {
+hbox.titlebar-spacer[type='post-tabs'],
+hbox.titlebar-spacer[type='pre-tabs'] {
   display: none;
 }
 
 @mixin rounded-corner {
-  content: "";
+  content: '';
   display: inline-block;
   width: 6px;
   height: 6px;
@@ -93,8 +93,8 @@ toolbar#TabsToolbar {
           max-width: 280px;
         }
 
-        &[multiselected="true"],
-        &[selected="true"] {
+        &[multiselected='true'],
+        &[selected='true'] {
           .tab-stack {
             overflow: visible;
 
@@ -146,8 +146,8 @@ toolbar#TabsToolbar {
             border-radius: 0 0 6px 6px !important;
             box-shadow: none !important;
 
-            &[multiselected="true"]:-moz-lwtheme,
-            &[selected="true"]:-moz-lwtheme {
+            &[multiselected='true']:-moz-lwtheme,
+            &[selected='true']:-moz-lwtheme {
               background-color: var(--lwt-accent-color) !important;
             }
           }
@@ -157,7 +157,7 @@ toolbar#TabsToolbar {
   }
 }
 
-#urlbar[focused="true"]:not([suppress-focus-border]) > #urlbar-background,
+#urlbar[focused='true']:not([suppress-focus-border]) > #urlbar-background,
 #searchbar:focus-within {
   outline: none !important;
 }
